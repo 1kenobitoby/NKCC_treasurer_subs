@@ -233,7 +233,7 @@ if check_password():
             if player['Subs'] > 40:
                 player['Subs'] = 40   
     
-    if calculate:
+    if calculate:  
         # Uncomment to debug
         # st.write(players)
         sat_games = next((item.get('Saturday games') for item in players if item['name'] == playername))
@@ -250,15 +250,18 @@ if check_password():
         if selectedmonth == month_now:
             st.write("**That month hasn't finished yet but here's how we're looking so far:**")
     
-    for p in players:
-        if p['Subs'] != 0:
-            person = p['name']
-            owes = str(p['Subs'])
-            output_string = '<strong><p style=font-family:courier;color:black;>' + person + ' £' + owes +'</p></strong>'
-            st.markdown(output_string, unsafe_allow_html=True)
-            # st.write(p['name'], ' £', p['Subs'])
-            st.write('   Saturday games ', p['Saturday games'], "; Women's outdoor games ", p["Women's outdoor games"], "; Women's indoor games ", p["Women's indoor games"], '; Junior games ', p['Junior games'], '; Other games ', p['Other games'])
-            st.write('')
+        for i in range(1):
+            st.write('Account name: North Kilworth Cricket Club  \nAccount number: ' + st.secrets['account_number'] + '  \nSort code: ' + st.secrets['sort_code']) 
+            for p in players:
+                if p['Subs'] != 0:
+                    person = p['name']
+                    owes = str(p['Subs'])
+                    output_string = '<strong><p style=font-family:courier;color:black;>' + person + ' £' + owes +'</p></strong>'
+                    st.markdown(output_string, unsafe_allow_html=True)
+                    # st.write(p['name'], ' £', p['Subs'])
+                    st.write('   Saturday games ', p['Saturday games'], "; Women's outdoor games ", p["Women's outdoor games"], "; Women's indoor games ", p["Women's indoor games"], '; Junior games ', p['Junior games'], '; Other games ', p['Other games'])
+                    st.write('')
+               
    
     
 
